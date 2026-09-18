@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dono Rahimova | 3D AI Prompt Engineer & Creative Technologist</title>
+  <meta name="description" content="Dono Rahimova - Najot Ta'lim bitiruvchisi, professional AI Prompt Engineer. 3D WebGL, Telegram botlar, AI rasm va video generatsiyasi, 3D multfilmlar hamda Instagram SMM xizmatlari.">
+  <meta name="keywords" content="Dono Rahimova, Prompt Engineering, Najot Ta'lim, 3D Portfolio, Telegram bot, AI rasm, AI video, Multfilm, Instagram, SMM">
+  <meta name="author" content="Dono Rahimova">
+  <meta property="og:title" content="Dono Rahimova | 3D AI Prompt Engineer">
+  <meta property="og:description" content="Haqiqiy 3D canvas, neon liquid glass va sun'iy intellekt mo'jizalari: Telegram botlar, AI rasm & video, 3D multfilm va Instagram.">
+  <meta property="og:image" content="assets/avatar.jpg">
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans & Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Three.js for Real WebGL 3D Canvas Scene -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- Top Scroll Progress Indicator -->
+  <div class="scroll-progress-container">
+    <div class="scroll-progress-bar" id="scroll-progress"></div>
+  </div>
+
+  <!-- Real WebGL 3D Canvas Background -->
+  <canvas id="webgl-canvas" class="webgl-canvas"></canvas>
+
+  <!-- Ambient Light Orbs for Liquid Glass Refraction -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Header / Navigation -->
+  <header class="glass-header" id="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-logo" aria-label="Bosh sahifa">
+        <div class="logo-prism">
+          <span class="logo-text">DR</span>
+          <span class="logo-dot"></span>
+        </div>
+        <div class="brand-info">
+          <span class="brand-name">DONO RAHIMOVA</span>
+          <span class="brand-tag">3D PROMPT ENGINEER</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="#hero" class="nav-link active" data-i18n="nav_home">Bosh sahifa</a></li>
+          <li><a href="#cube-section" class="nav-link" data-i18n="nav_cube">3D Ekosistema</a></li>
+          <li><a href="#services" class="nav-link" data-i18n="nav_services">Yo'nalishlar</a></li>
+          <li><a href="#portfolio" class="nav-link" data-i18n="nav_portfolio">Flip Loyihalar</a></li>
+          <li><a href="#playground" class="nav-link" data-i18n="nav_playground">Prompt Lab</a></li>
+          <li><a href="#about" class="nav-link" data-i18n="nav_about">Men haqimda</a></li>
+          <li><a href="#contact" class="nav-link" data-i18n="nav_contact">Bog'lanish</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Language Switcher (UZ / RU / EN) -->
+        <div class="lang-selector" id="lang-selector">
+          <button class="lang-btn active" data-lang="uz">UZ</button>
+          <button class="lang-btn" data-lang="ru">RU</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+
+        <a href="tel:+998977540979" class="btn btn-glass-neon btn-sm header-cta" id="header-call-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span data-i18n="call_action">Qo'ng'iroq</span>
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Menyuni ochish">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION WITH 3D TILT LIQUID GLASS HOLO CARD -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        <!-- Left Hero Details -->
+        <div class="hero-content reveal-on-scroll">
+          <div class="badge-row">
+            <div class="glass-pill pill-neon">
+              <span class="live-dot"></span>
+              <span data-i18n="hero_status">Yangi loyihalar uchun ochiq</span>
+            </div>
+            <div class="glass-pill pill-academy">
+              <span class="academy-icon">🎓</span>
+              <span>Najot Ta'lim Bitiruvchisi</span>
+            </div>
+          </div>
+
+          <h1 class="hero-title">
+            <span class="hero-greeting" data-i18n="hero_greeting">Salom, men</span>
+            <span class="hero-name gradient-text">Dono Rahimova</span>
+          </h1>
+
+          <div class="typewriter-box">
+            <span class="type-prefix" data-i18n="hero_type_prefix">Mutaxassislik:</span>
+            <span class="typewriter-text" id="typewriter"></span>
+            <span class="cursor">|</span>
+          </div>
+
+          <p class="hero-description" data-i18n="hero_desc">
+            Zamonaviy AI modellarini biznes va kreativ industriyaga integratsiya qiluvchi Prompt Muhandisi. 
+            Sun'iy intellekt orqali mukammal Telegram botlar, fotorealistik tasvirlar, 3D multfilm animatsiyalari hamda yuqori konversiyali Instagram kontentlarini yarataman.
+          </p>
+
+          <!-- Language Badges -->
+          <div class="lang-pills-row">
+            <span class="lang-pill"><span class="flag">🇺🇿</span> O'zbek tili (Ona tili)</span>
+            <span class="lang-pill"><span class="flag">🇬🇧</span> English (Advanced)</span>
+            <span class="lang-pill"><span class="flag">🇷🇺</span> Русский (Свободный)</span>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#portfolio" class="btn btn-liquid-glow" id="btn-explore-projects">
+              <span data-i18n="btn_projects">Flip Loyihalarni ko'rish</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="https://t.me/donoraximova_ai" target="_blank" rel="noopener noreferrer" class="btn btn-glass-neon" id="btn-telegram-hero">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.52 2.77-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .37z"/></svg>
+              <span>Telegram orqali</span>
+            </a>
+            <a href="tel:+998977540979" class="btn btn-glass-ghost" id="btn-phone-quick">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>+998 97 754 09 79</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right 3D Tilt Liquid Glass Holo Card (Modeled directly from user reference) -->
+        <div class="hero-card-wrapper reveal-on-scroll">
+          <div class="tilt-container" id="tilt-container">
+            <div class="liquid-glass-card holo-tilt-card" id="holo-card">
+              <!-- Dynamic Specular Reflection & Neon Halo -->
+              <div class="glass-reflection" id="glass-specular"></div>
+              <div class="glass-neon-border"></div>
+
+              <!-- Card Top Header Bar (Instagram icon + chip) -->
+              <div class="card-top-bar layer-depth" data-depth="25">
+                <div class="insta-neon-icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </div>
+                <div class="card-chip">
+                  <span class="chip-dot"></span>
+                  <span>3D HOLO GLASS</span>
+                </div>
+              </div>
+
+              <!-- Avatar with Neon Glowing Ring -->
+              <div class="card-avatar-wrap layer-depth" data-depth="45">
+                <div class="avatar-neon-ring">
+                  <img src="assets/avatar.jpg" alt="Dono Rahimova - AI Prompt Engineer" class="avatar-img" id="card-avatar">
+                </div>
+                <div class="avatar-verified" title="Tasdiqlangan AI Mutaxassis">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </div>
+              </div>
+
+              <!-- Identity Info -->
+              <div class="card-identity layer-depth" data-depth="35">
+                <h2 class="card-user-name">Dono Rahimova</h2>
+                <p class="card-user-role">Prompt Engineer & AI Creator</p>
+                <div class="card-social-tag">
+                  <span class="social-icon-sm">@</span>
+                  <span class="social-handle">donoraximova_ai</span>
+                </div>
+              </div>
+
+              <!-- Floating Metrics Grid (Exact match from reference photo) -->
+              <div class="card-metrics-grid layer-depth" data-depth="30">
+                <div class="metric-item">
+                  <span class="metric-val" data-target="50">50+</span>
+                  <span class="metric-label" data-i18n="stat_bots">BOTLAR</span>
+                </div>
+                <div class="metric-divider"></div>
+                <div class="metric-item">
+                  <span class="metric-val" data-target="10000">10K+</span>
+                  <span class="metric-label" data-i18n="stat_art">AI ART</span>
+                </div>
+                <div class="metric-divider"></div>
+                <div class="metric-item">
+                  <span class="metric-val" data-target="100">100+</span>
+                  <span class="metric-label" data-i18n="stat_video">REELS/VIDEO</span>
+                </div>
+              </div>
+
+              <!-- Direct Contact & Email Row -->
+              <div class="card-direct-contact layer-depth" data-depth="20">
+                <a href="tel:+998977540979" class="contact-pill-link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  <span>+998 97 754 09 79</span>
+                </a>
+                <span class="contact-email">dono.prompt.ai@gmail.com</span>
+              </div>
+
+              <!-- Interactive Glass Buttons -->
+              <div class="card-actions-bar layer-depth" data-depth="25">
+                <a href="https://t.me/donoraximova_ai" target="_blank" rel="noopener noreferrer" class="glass-btn-pill primary">
+                  <span data-i18n="card_btn_follow">Kuzatish</span>
+                </a>
+                <a href="#contact" class="glass-btn-pill secondary">
+                  <span data-i18n="card_btn_msg">Xabar</span>
+                </a>
+                <button class="glass-btn-pill icon-only copy-contact-btn" id="copy-card-phone" title="Raqamni nusxalash" aria-label="Telefon raqamni nusxalash">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: INTERACTIVE 3D ROTATING GLASS CUBE (AYLANUVCHI 3D KUB) -->
+    <section class="section cube-section" id="cube-section">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <div class="glass-pill pill-sub"><span data-i18n="cube_tag">3D INTERAKTIV TAJRIBA</span></div>
+          <h2 class="section-title"><span data-i18n="cube_title_1">Aylanuvchi</span> <span class="gradient-text" data-i18n="cube_title_2">3D Shisha Kub</span></h2>
+          <p class="section-subtitle" data-i18n="cube_sub">Sichqoncha yoki barmoq yordamida kubni ushlab aylantiring va mutaxassislikning 6 ta tomonini o'rganing</p>
+        </div>
+
+        <div class="cube-showcase-wrapper reveal-on-scroll">
+          <!-- 3D Cube Controls -->
+          <div class="cube-controls-bar">
+            <button class="btn-cube-control active" id="cube-autorotate-btn">
+              <span class="spin-icon">⟳</span>
+              <span id="spin-btn-text">Avto-Aylanish: Yoqilgan</span>
+            </button>
+            <div class="cube-hint">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M17 7l5 5-5 5M7 17l-5-5 5-5"/></svg>
+              <span>Kubni sudrab aylantiring</span>
+            </div>
+          </div>
+
+          <!-- 3D Scene Viewport -->
+          <div class="cube-viewport" id="cube-viewport">
+            <div class="cube-3d" id="cube-3d">
+              <!-- Face 1: Front - Telegram Botlar -->
+              <div class="cube-face cube-front">
+                <div class="face-glow"></div>
+                <div class="face-icon">🤖</div>
+                <h3 class="face-title">Telegram Botlar</h3>
+                <p class="face-desc">ChatGPT & Claude bilan integratsiyalangan avtomatlashtirilgan aqlli yordamchi botlar.</p>
+                <span class="face-badge">Aiogram 3 • Python</span>
+              </div>
+
+              <!-- Face 2: Back - 3D Multfilm -->
+              <div class="cube-face cube-back">
+                <div class="face-glow"></div>
+                <div class="face-icon">🎬</div>
+                <h3 class="face-title">3D Multfilm</h3>
+                <p class="face-desc">Pixar uslubidagi personajlar, kinematik AI animatsiya va ovozlashtirish.</p>
+                <span class="face-badge">Runway Gen-3 • Luma</span>
+              </div>
+
+              <!-- Face 3: Right - Generativ Rasm -->
+              <div class="cube-face cube-right">
+                <div class="face-glow"></div>
+                <div class="face-icon">🎨</div>
+                <h3 class="face-title">Generativ Rasm</h3>
+                <p class="face-desc">Midjourney v6 va Flux orqali fotorealistik reklama, mahsulot va brend vizuallari.</p>
+                <span class="face-badge">Midjourney • Flux.1</span>
+              </div>
+
+              <!-- Face 4: Left - Instagram SMM -->
+              <div class="cube-face cube-left">
+                <div class="face-glow"></div>
+                <div class="face-icon">📱</div>
+                <h3 class="face-title">Instagram SMM</h3>
+                <p class="face-desc">Viral AI Reels, estetik vizual grid va organik o'sish strategiyasi.</p>
+                <span class="face-badge">Viral Reels • Kontent</span>
+              </div>
+
+              <!-- Face 5: Top - Najot Ta'lim -->
+              <div class="cube-face cube-top">
+                <div class="face-glow"></div>
+                <div class="face-icon">🎓</div>
+                <h3 class="face-title">Najot Ta'lim</h3>
+                <p class="face-desc">Prompt Engineering va AI texnologiyalari bo'yicha mustahkam akademik poydevor.</p>
+                <span class="face-badge">Sertifikatlangan</span>
+              </div>
+
+              <!-- Face 6: Bottom - 3 Tilda Promptlash -->
+              <div class="cube-face cube-bottom">
+                <div class="face-glow"></div>
+                <div class="face-icon">🌐</div>
+                <h3 class="face-title">3 Tilda Muloqot</h3>
+                <p class="face-desc">O'zbek, Ingliz va Rus tillarida professional prompt injeneriyasi.</p>
+                <span class="face-badge">UZ • EN • RU</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fast navigation pills to snap cube faces -->
+          <div class="cube-face-selector">
+            <button class="face-btn active" data-face="front">🤖 Botlar</button>
+            <button class="face-btn" data-face="right">🎨 Rasm</button>
+            <button class="face-btn" data-face="back">🎬 Multfilm</button>
+            <button class="face-btn" data-face="left">📱 Instagram</button>
+            <button class="face-btn" data-face="top">🎓 Najot Ta'lim</button>
+            <button class="face-btn" data-face="bottom">🌐 Tillar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: SERVICES & YO'NALISHLAR (3D TILT CARDS) -->
+    <section class="section services-section" id="services">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <div class="glass-pill pill-sub"><span data-i18n="serv_tag">XIZMATLAR & IMKONIYATLAR</span></div>
+          <h2 class="section-title"><span data-i18n="serv_title_1">Asosiy</span> <span class="gradient-text" data-i18n="serv_title_2">Yo'nalishlarim</span></h2>
+          <p class="section-subtitle" data-i18n="serv_sub">Zamonaviy neyron tarmoqlar yordamida har qanday g'oyani yuqori sifatli mahsulotga aylantiring</p>
+        </div>
+
+        <div class="services-grid">
+          <!-- Service 1: Telegram Botlar -->
+          <div class="liquid-card service-card tilt-item reveal-on-scroll">
+            <div class="card-glow-edge"></div>
+            <div class="service-icon-wrap">
+              <div class="service-icon-box bot-gradient">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path><rect x="4" y="8" width="16" height="12" rx="2"></rect><line x1="9" y1="13" x2="9" y2="13.01"></line><line x1="15" y1="13" x2="15" y2="13.01"></line><line x1="10" y1="17" x2="14" y2="17"></line></svg>
+              </div>
+              <span class="service-num">01</span>
+            </div>
+            <h3 class="service-name" data-i18n="serv_1_name">Turli xil Telegram Botlar</h3>
+            <p class="service-desc" data-i18n="serv_1_desc">
+              AI integratsiyalashgan aqlli chat-botlar, savdo va buyurtma botlari, mijozlarga avtomatik xizmat ko'rsatish (support), tahliliy va to'lov tizimlariga ulangan murakkab Telegram botlar.
+            </p>
+            <div class="service-tags">
+              <span class="tag-pill">Python</span>
+              <span class="tag-pill">ChatGPT API</span>
+              <span class="tag-pill">Aiogram</span>
+              <span class="tag-pill">Ekotizim</span>
+            </div>
+          </div>
+
+          <!-- Service 2: Generatsiya Rasm -->
+          <div class="liquid-card service-card tilt-item reveal-on-scroll">
+            <div class="card-glow-edge"></div>
+            <div class="service-icon-wrap">
+              <div class="service-icon-box art-gradient">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              </div>
+              <span class="service-num">02</span>
+            </div>
+            <h3 class="service-name" data-i18n="serv_2_name">Generatsiya Rasm va San'at</h3>
+            <p class="service-desc" data-i18n="serv_2_desc">
+              Midjourney v6, Flux, Stable Diffusion va DALL-E orqali fotorealistik reklama tasvirlari, brending grafikalari, mahsulot 3D renderlari va san'at konseptlarini yaratish.
+            </p>
+            <div class="service-tags">
+              <span class="tag-pill">Midjourney v6</span>
+              <span class="tag-pill">Flux.1 Dev</span>
+              <span class="tag-pill">Stable Diffusion</span>
+              <span class="tag-pill">Photorealistic</span>
+            </div>
+          </div>
+
+          <!-- Service 3: Multfilm & AI Video -->
+          <div class="liquid-card service-card tilt-item reveal-on-scroll">
+            <div class="card-glow-edge"></div>
+            <div class="service-icon-wrap">
+              <div class="service-icon-box video-gradient">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+              </div>
+              <span class="service-num">03</span>
+            </div>
+            <h3 class="service-name" data-i18n="serv_3_name">Multfilm & Video Generatsiyasi</h3>
+            <p class="service-desc" data-i18n="serv_3_desc">
+              3D multfilm animatsiyalari, personajlar dizayni, ssenariy bo'yicha dinamik qisqa filmlar, Runway Gen-3 va Luma yordamida yuqori sifatli harakatli video roliklar.
+            </p>
+            <div class="service-tags">
+              <span class="tag-pill">3D Cartoon</span>
+              <span class="tag-pill">Runway Gen-3</span>
+              <span class="tag-pill">Luma AI</span>
+              <span class="tag-pill">ElevenLabs</span>
+            </div>
+          </div>
+
+          <!-- Service 4: Instagram Yurgizish & SMM -->
+          <div class="liquid-card service-card tilt-item reveal-on-scroll">
+            <div class="card-glow-edge"></div>
+            <div class="service-icon-wrap">
+              <div class="service-icon-box insta-gradient">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              </div>
+              <span class="service-num">04</span>
+            </div>
+            <h3 class="service-name" data-i18n="serv_4_name">Instani Yurgizish & SMM</h3>
+            <p class="service-desc" data-i18n="serv_4_desc">
+              Instagram sahifalarini noldan kreativ yuritish, AI yordamida trenddagi viral Reels roliklar, professional vizual grid uslubi, target auditoriyani jalb qilish va kontent-reja.
+            </p>
+            <div class="service-tags">
+              <span class="tag-pill">Viral Reels</span>
+              <span class="tag-pill">SMM Strategiya</span>
+              <span class="tag-pill">AI Kontent</span>
+              <span class="tag-pill">Organik O'sish</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: 3D FLIP LOYIHALAR (FLIP PROJECTS) -->
+    <section class="section portfolio-section" id="portfolio">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <div class="glass-pill pill-sub"><span data-i18n="port_tag">3D FLIP KARTALAR</span></div>
+          <h2 class="section-title"><span data-i18n="port_title_1">Flip</span> <span class="gradient-text" data-i18n="port_title_2">Loyihalar Galereyasi</span></h2>
+          <p class="section-subtitle" data-i18n="port_sub">Kartaning orqasini o'girish (Flip) orqali yashirin prompt formulasini va texnologiyalarni ko'ring</p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="portfolio-filters reveal-on-scroll" id="portfolio-filters">
+          <button class="filter-btn active" data-filter="all" data-i18n="filter_all">Barchasi</button>
+          <button class="filter-btn" data-filter="bot" data-i18n="filter_bot">Telegram Botlar</button>
+          <button class="filter-btn" data-filter="art" data-i18n="filter_art">Generativ Rasm</button>
+          <button class="filter-btn" data-filter="cartoon" data-i18n="filter_cartoon">3D Multfilm</button>
+          <button class="filter-btn" data-filter="insta" data-i18n="filter_insta">Instagram SMM</button>
+        </div>
+
+        <!-- 3D Flip Projects Grid -->
+        <div class="flip-projects-grid" id="projects-grid">
+          
+          <!-- 3D FLIP CARD 1: AI Telegram Bot -->
+          <div class="flip-card reveal-on-scroll" data-category="bot">
+            <div class="flip-card-inner">
+              <!-- FRONT FACE -->
+              <div class="flip-card-front liquid-card">
+                <div class="card-glow-edge"></div>
+                <div class="project-img-wrap">
+                  <img src="assets/project_bot.jpg" alt="AI Telegram Bot Assistent" class="project-img" loading="lazy">
+                  <div class="flip-hint-badge">
+                    <span>3D Flip</span> ⟳
+                  </div>
+                </div>
+                <div class="project-info">
+                  <div class="project-meta">
+                    <span class="project-cat">Telegram Bot</span>
+                    <span class="project-lang">UZ / EN / RU</span>
+                  </div>
+                  <h3 class="project-title">Smart AI Customer Assistant Bot</h3>
+                  <p class="project-desc">Mijozlar bilan 24/7 insondek muloqot qiluvchi va buyurtmalarni avtomat boshqaruvchi neyron bot.</p>
+                  <div class="project-techs">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Aiogram 3</span>
+                    <span class="tech-tag">Claude 3.5</span>
+                  </div>
+                  <button class="btn btn-glass-neon btn-sm flip-trigger-btn">
+                    <span>Promptni ko'rish (Flip)</span> ⤿
+                  </button>
+                </div>
+              </div>
+
+              <!-- BACK FACE (3D FLIPPED) -->
+              <div class="flip-card-back liquid-card">
+                <div class="back-header">
+                  <span class="back-tag">PROMPT BLUEPRINT</span>
+                  <button class="btn-flip-back" title="Oldiga qaytish">✕</button>
+                </div>
+                <h4 class="back-title">System Prompt Arxitekturasi</h4>
+                <div class="prompt-box-small">
+                  <code>&quot;You are an enterprise AI concierge. Tone: empathetic, highly competent. Handle inquiries in Uzbek, English, and Russian seamlessly with zero hallucination...&quot;</code>
+                </div>
+                <div class="back-specs">
+                  <div class="spec-row">
+                    <span class="spec-k">Natija:</span>
+                    <span class="spec-v">98.4% mijoz mamnunligi</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="spec-k">Javob tezligi:</span>
+                    <span class="spec-v">&lt; 1.2 soniya</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="spec-k">Integratsiya:</span>
+                    <span class="spec-v">CRM, Payme, Click</span>
+                  </div>
+                </div>
+                <div class="back-actions">
+                  <a href="https://t.me/donoraximova_ai" target="_blank" class="btn btn-liquid-glow btn-sm">Botga Buyurtma</a>
+                  <button class="btn btn-glass-ghost btn-sm btn-copy-back" data-copy="Enterprise AI Concierge Prompt Blueprint">Nusxalash</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3D FLIP CARD 2: Generative Art -->
+          <div class="flip-card reveal-on-scroll" data-category="art">
+            <div class="flip-card-inner">
+              <!-- FRONT FACE -->
+              <div class="flip-card-front liquid-card">
+                <div class="card-glow-edge"></div>
+                <div class="project-img-wrap">
+                  <img src="assets/project_ai_art.jpg" alt="Generativ AI San'ati" class="project-img" loading="lazy">
+                  <div class="flip-hint-badge">
+                    <span>3D Flip</span> ⟳
+                  </div>
+                </div>
+                <div class="project-info">
+                  <div class="project-meta">
+                    <span class="project-cat">Generativ Rasm</span>
+                    <span class="project-lang">8K Octane Visual</span>
+                  </div>
+                  <h3 class="project-title">Bioluminescent Cosmic Oasis</h3>
+                  <p class="project-desc">Midjourney v6 va Flux yordamida kristall va neon o'simliklar konseptual tijoriy san'ati.</p>
+                  <div class="project-techs">
+                    <span class="tech-tag">Midjourney v6</span>
+                    <span class="tech-tag">Flux.1 Dev</span>
+                    <span class="tech-tag">Raw Style</span>
+                  </div>
+                  <button class="btn btn-glass-neon btn-sm flip-trigger-btn">
+                    <span>Promptni ko'rish (Flip)</span> ⤿
+                  </button>
+                </div>
+              </div>
+
+              <!-- BACK FACE (3D FLIPPED) -->
+              <div class="flip-card-back liquid-card">
+                <div class="back-header">
+                  <span class="back-tag">PROMPT BLUEPRINT</span>
+                  <button class="btn-flip-back" title="Oldiga qaytish">✕</button>
+                </div>
+                <h4 class="back-title">Midjourney v6 Parametrlari</h4>
+                <div class="prompt-box-small">
+                  <code>/imagine prompt: Bioluminescent crystal lotuses blooming in a cosmic obsidian cavern, neon magenta and cyan iridescent refractive petals, octane render, volumetric lighting --ar 16:9 --style raw --v 6.0 --q 2</code>
+                </div>
+                <div class="back-specs">
+                  <div class="spec-row">
+                    <span class="spec-k">Format:</span>
+                    <span class="spec-v">Ultra 8K UHD</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="spec-k">Rang balansi:</span>
+                    <span class="spec-v">Magenta / Cyan Prism</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="spec-k">Qo'llanilishi:</span>
+                    <span class="spec-v">Brending, Reklama, UI</span>
+                  </div>
+                </div>
+                <div class="back-actions">
+                  <a href="#contact" class="btn btn-liquid-glow btn-sm">Bunday Rasm Buyurtmasi</a>
+                  <button class="btn btn-glass-ghost btn-sm btn-copy-back" data-copy="Bioluminescent crystal lotuses blooming in a cosmic obsidian cavern, neon magenta and cyan iridescent refractive petals, octane render, volumetric lighting --ar 16:9 --style raw --v 6.0 --q 2">Nusxalash</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3D FLIP CARD 3: 3D Multfilm -->
+          <div class="flip-card reveal-on-scroll" data-category="cartoon">
+            <div class="flip-card-inner">
+              <!-- FRONT FACE -->
+              <div class="flip-card-front liquid-card">
+                <div class="card-glow-edge"></div>
+                <div class="project-img-wrap">
+                  <img src="assets/project_animation.jpg" alt="3D AI Multfilm Animatsiyasi" class="project-img" loading="lazy">
+                  <div class="flip-hint-badge">
+                    <span>3D Flip</span> ⟳
+                  </div>
+                </div>
+                <div class="project-info">
+                  <div class="project-meta">
+                    <span class="project-cat">3D Multfilm & Video</span>
+                    <span class="project-lang">Pixar Cinematic</span>
+                  </div>
+                  <h3 class="project-title">Sehrli O'rmon Qahramoni (3D Film)</h3>
+                  <p class="project-desc">Animatsion hikoyalar uchun sevimli 3D personaj. Runway Gen-3 va Luma orqali harakatga keltirilgan.</p>
+                  <div class="project-techs">
+                    <span class="tech-tag">Runway Gen-3</span>
+                    <span class="tech-tag">Luma Dream</span>
+                    <span class="tech-tag">ElevenLabs</span>
+                  </div>
+                  <button class="btn btn-glass-neon btn-sm flip-trigger-btn">
+                    <span>Promptni ko'rish (Flip)</span> ⤿
+                  </button>
+                </div>
+              </div>
+
+              <!-- BACK FACE (3D FLIPPED) -->
+              <div class="flip-card-back liquid-card">
+                <div class="back-header">
+                  <span class="back-tag">PROMPT BLUEPRINT</span>
+                  <button class="btn-flip-back" title="Oldiga qaytish">✕</button>
+                </div>
+                <h4 class="back-title">Video Motion & Ssenariy</h4>
+                <div class="prompt-box-small">
+                  <code>Camera slow push in: Adorable blue fantasy creature walking through glowing enchanted fairy forest holding brass lantern, soft cinematic Pixar lighting, expressive warm eyes, whimsical mood --motion 6</code>
+                </div>
+                <div class="back-specs">
+                  <div class="spec-row">
+                    <span class="spec-k">Dvigatel:</span>
+                    <span class="spec-v">Runway Gen-3 Alpha</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="spec-k">FPS:</span>
+                    <span class="spec-v">60 FPS Smooth Flow</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="spec-k">Ovoz:</span>
+                    <span class="spec-v">AI Sound FX & Dublyaj</span>
+                  </div>
+                </div>
+                <div class="back-actions">
+                  <a href="#contact" class="btn btn-liquid-glow btn-sm">Multfilm Tayyorlash</a>
+                  <button class="btn btn-glass-ghost btn-sm btn-copy-back" data-copy="Camera slow push in: Adorable blue fantasy creature walking through glowing enchanted fairy forest holding brass lantern, soft cinematic Pixar lighting, expressive warm eyes, whimsical mood --motion 6">Nusxalash</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3D FLIP CARD 4: Instagram SMM -->
+          <div class="flip-card reveal-on-scroll" data-category="insta">
+            <div class="flip-card-inner">
+              <!-- FRONT FACE -->
+              <div class="flip-card-front liquid-card">
+                <div class="card-glow-edge"></div>
+                <div class="project-img-wrap">
+                  <img src="assets/project_instagram.jpg" alt="Instagram AI SMM Yurgizish" class="project-img" loading="lazy">
+                  <div class="flip-hint-badge">
+                    <span>3D Flip</span> ⟳
+                  </div>
+                </div>
+                <div class="project-info">
+                  <div class="project-meta">
+                    <span class="project-cat">Instagram & SMM</span>
+                    <span class="project-lang">Viral Reels Growth</span>
+                  </div>
+                  <h3 class="project-title">AI Fashion & Trend Reels Campaign</h3>
+                  <p class="project-desc">Instagram sahifasini noldan yurgizish: AI orqali har haftalik 15+ trenddagi reels va estetik vizual grid.</p>
+                  <div class="project-techs">
+                    <span class="tech-tag">Viral Reels</span>
+                    <span class="tech-tag">CapCut AI</span>
+                    <span class="tech-tag">SMM Funnel</span>
+                  </div>
+                  <button class="btn btn-glass-neon btn-sm flip-trigger-btn">
+                    <span>Promptni ko'rish (Flip)</span> ⤿
+                  </button>
+                </div>
+              </div>
+
+              <!-- BACK FACE (3D FLIPPED) -->
+              <div class="flip-card-back liquid-card">
+                <div class="back-header">
+                  <span class="back-tag">PROMPT BLUEPRINT</span>
+                  <button class="btn-flip-back" title="Oldiga qaytish">✕</button>
+                </div>
+                <h4 class="back-title">SMM & Hook Algoritmi</h4>
+                <div class="prompt-box-small">
+                  <code>[3-Second Hook]: &quot;Bu kiyimlarni hech kim tikmagan — barchasi AI!&quot; -> Visual transition: neon holographic runway -> CTA: &quot;Izohda 'PROMPT' deb yozing va formulani oling&quot;</code>
+                </div>
+                <div class="back-specs">
+                  <div class="spec-row">
+                    <span class="spec-k">Ko'rishlar soni:</span>
+                    <span class="spec-v">450K+ Organik</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="spec-k">Obunachilar o'sishi:</span>
+                    <span class="spec-v">+7,800 yangi auditoriya</span>
+                  </div>
+                  <div class="spec-row">
+                    <span class="spec-k">Saqlashlar:</span>
+                    <span class="spec-v">14,200+ ta</span>
+                  </div>
+                </div>
+                <div class="back-actions">
+                  <a href="#contact" class="btn btn-liquid-glow btn-sm">Instani Yurgizish</a>
+                  <button class="btn btn-glass-ghost btn-sm btn-copy-back" data-copy="[3-Second Hook]: 'Bu kiyimlarni hech kim tikmagan — barchasi AI!' -> Visual transition: neon holographic runway -> CTA">Nusxalash</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: INTERACTIVE PROMPT PLAYGROUND (PROMPT LAB) -->
+    <section class="section playground-section" id="playground">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <div class="glass-pill pill-sub"><span data-i18n="play_tag">INTERAKTIV PROMPT LAB</span></div>
+          <h2 class="section-title"><span data-i18n="play_title_1">Prompt Qanday</span> <span class="gradient-text" data-i18n="play_title_2">Mo'jiza Yaratadi?</span></h2>
+          <p class="section-subtitle" data-i18n="play_sub">Toifalardan birini tanlang va Dono Rahimova uslubidagi professional prompt arxitekturasini sinab ko'ring</p>
+        </div>
+
+        <div class="liquid-card playground-card tilt-item reveal-on-scroll">
+          <div class="card-glow-edge"></div>
+          
+          <!-- Category Tabs -->
+          <div class="playground-tabs" id="prompt-tabs">
+            <button class="play-tab active" data-category="bot">
+              <span class="tab-emoji">🤖</span>
+              <span>Telegram Bot AI</span>
+            </button>
+            <button class="play-tab" data-category="art">
+              <span class="tab-emoji">🎨</span>
+              <span>Generativ Rasm</span>
+            </button>
+            <button class="play-tab" data-category="cartoon">
+              <span class="tab-emoji">🎬</span>
+              <span>3D Multfilm</span>
+            </button>
+            <button class="play-tab" data-category="reels">
+              <span class="tab-emoji">📱</span>
+              <span>Instagram Viral Reel</span>
+            </button>
+          </div>
+
+          <!-- Playground Display Box -->
+          <div class="playground-display">
+            <div class="terminal-header">
+              <div class="term-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <span class="term-title" id="playground-tool-label">Model: Claude 3.5 Sonnet / Midjourney v6 Engine</span>
+              <button class="btn-copy-code" id="btn-copy-prompt" title="Promptni nusxalash">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span id="copy-prompt-text">Nusxa olish</span>
+              </button>
+            </div>
+
+            <div class="terminal-body">
+              <div class="prompt-meta-row">
+                <span class="meta-badge" id="prompt-category-badge">Kategoriya: Telegram Bot</span>
+                <span class="meta-badge lang-badge" id="prompt-lang-badge">Tillar: UZ / EN / RU</span>
+              </div>
+              <pre class="prompt-code" id="prompt-code-output"><code>// Tanlangan rejim yuklanmoqda...</code></pre>
+              <div class="prompt-explanation" id="prompt-explanation">
+                <strong>Natija:</strong> Yuqori konversiyali, har bir buyruqni aniq tushunuvchi tizim arxitekturasi.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: ABOUT & NAJOT TA'LIM -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <div class="glass-pill pill-sub"><span data-i18n="about_tag">PROFIL & TA'LIM</span></div>
+          <h2 class="section-title"><span data-i18n="about_title_1">Men haqimda &</span> <span class="gradient-text" data-i18n="about_title_2">Mening Missiyam</span></h2>
+          <p class="section-subtitle" data-i18n="about_sub">Murakkab sun'iy intellekt modellarini inson g'oyalari bilan bog'laydigan ko'prik</p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Story Glass Card -->
+          <div class="liquid-card story-card tilt-item reveal-on-scroll">
+            <div class="card-glow-edge"></div>
+            <div class="story-badge">
+              <span class="badge-icon">💡</span>
+              <span data-i18n="about_story_badge">Ijodiy Falsafa</span>
+            </div>
+            <h3 class="story-title" data-i18n="about_story_title">Prompt Engineering — bu shunchaki buyruq yozish emas, bu kelajak tilidir.</h3>
+            <p class="story-p" data-i18n="about_story_p1">
+              Men Dono Rahimova, O'zbekistondagi nufuzli <strong>Najot Ta'lim</strong> akademiyasida chuqur bilim va amaliy ko'nikmalarni egallagan professional Prompt Engineer va AI kontent yaratuvchisiman.
+            </p>
+            <p class="story-p" data-i18n="about_story_p2">
+              Mening maqsadim — zamonaviy sun'iy intellekt qudrati (ChatGPT-4o, Claude 3.5 Sonnet, Midjourney v6, Stable Diffusion, Runway Gen-3, Luma) orqali kompaniyalar, brendlar va shaxslar uchun biznes jarayonlarni avtomatlashtirish, Telegram botlar yaratish va dunyo miqyosidagi vizual kontentlarni taqdim etish.
+            </p>
+
+            <div class="languages-box">
+              <h4 class="box-subtitle" data-i18n="about_langs_title">Muloqot va Prompt Tillarim:</h4>
+              <div class="lang-meters-grid">
+                <div class="meter-item">
+                  <div class="meter-head">
+                    <span class="meter-label">🇺🇿 O'zbek tili</span>
+                    <span class="meter-pct">100% (Ona tili)</span>
+                  </div>
+                  <div class="meter-bar"><div class="meter-fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="meter-item">
+                  <div class="meter-head">
+                    <span class="meter-label">🇬🇧 English Language</span>
+                    <span class="meter-pct">90% (Professional AI Prompts)</span>
+                  </div>
+                  <div class="meter-bar"><div class="meter-fill" style="width: 90%;"></div></div>
+                </div>
+                <div class="meter-item">
+                  <div class="meter-head">
+                    <span class="meter-label">🇷🇺 Русский язык</span>
+                    <span class="meter-pct">85% (Свободное владение)</span>
+                  </div>
+                  <div class="meter-bar"><div class="meter-fill" style="width: 85%;"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Highlight Stats & Features Cards -->
+          <div class="about-cards-col">
+            <!-- Academy Card -->
+            <div class="liquid-card mini-card card-najot tilt-item reveal-on-scroll">
+              <div class="card-glow-edge"></div>
+              <div class="mini-icon-circle">🎓</div>
+              <div class="mini-card-text">
+                <span class="mini-label" data-i18n="about_academy_label">Akademiya & Malaka</span>
+                <h4 class="mini-title">Najot Ta'lim</h4>
+                <p class="mini-desc" data-i18n="about_academy_desc">Prompt Engineering va AI texnologiyalari bo'yicha intensiv amaliy dastur bitiruvchisi.</p>
+              </div>
+            </div>
+
+            <!-- Workflow Card -->
+            <div class="liquid-card mini-card tilt-item reveal-on-scroll">
+              <div class="card-glow-edge"></div>
+              <div class="mini-icon-circle">⚡</div>
+              <div class="mini-card-text">
+                <span class="mini-label" data-i18n="about_flow_label">Tezkor Natija</span>
+                <h4 class="mini-title" data-i18n="about_flow_title">Iterativ & Aniq Yondashuv</h4>
+                <p class="mini-desc" data-i18n="about_flow_desc">Mijoz talabiga ko'ra bir necha variantda sinovdan o'tgan, yuqori sifatli natijalar kafolati.</p>
+              </div>
+            </div>
+
+            <!-- Automation Card -->
+            <div class="liquid-card mini-card tilt-item reveal-on-scroll">
+              <div class="card-glow-edge"></div>
+              <div class="mini-icon-circle">🚀</div>
+              <div class="mini-card-text">
+                <span class="mini-label" data-i18n="about_auto_label">Biznes Avtomatlashtirish</span>
+                <h4 class="mini-title" data-i18n="about_auto_title">24/7 Aqlli Botlar</h4>
+                <p class="mini-desc" data-i18n="about_auto_desc">Mijozlar bilan doimiy aloqa va savdo konversiyasini oshiruvchi Telegram ekotizimlari.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: CONTACT & WORKING LIQUID FORM -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <div class="glass-pill pill-sub"><span data-i18n="contact_tag">BOG'LANISH VA HAMKORLIK</span></div>
+          <h2 class="section-title"><span data-i18n="contact_title_1">Loyiha Bormi?</span> <span class="gradient-text" data-i18n="contact_title_2">Birgalikda Yaratamiz!</span></h2>
+          <p class="section-subtitle" data-i18n="contact_sub">Savollaringiz bormi yoki yangi loyiha boshlamoqchimisiz? Men bilan qulay usulda bog'laning</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Left: Contact Details -->
+          <div class="contact-info-col">
+            <!-- Direct Phone Card -->
+            <a href="tel:+998977540979" class="liquid-card contact-item-card tilt-item reveal-on-scroll" id="contact-call-direct">
+              <div class="card-glow-edge"></div>
+              <div class="contact-icon-bubble">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div class="contact-meta">
+                <span class="contact-type" data-i18n="contact_phone_label">Telefon qo'ng'iroq:</span>
+                <span class="contact-val highlight-number">+998 97 754 09 79</span>
+                <span class="contact-hint" data-i18n="contact_phone_hint">Har kuni 09:00 dan 21:00 gacha</span>
+              </div>
+              <div class="contact-arrow">→</div>
+            </a>
+
+            <!-- Telegram Card -->
+            <a href="https://t.me/donoraximova_ai" target="_blank" rel="noopener noreferrer" class="liquid-card contact-item-card tilt-item reveal-on-scroll">
+              <div class="card-glow-edge"></div>
+              <div class="contact-icon-bubble telegram-bubble">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.52 2.77-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .37z"/></svg>
+              </div>
+              <div class="contact-meta">
+                <span class="contact-type">Telegram:</span>
+                <span class="contact-val">@donoraximova_ai</span>
+                <span class="contact-hint" data-i18n="contact_tg_hint">Tezkor javob berish kafolatlangan</span>
+              </div>
+              <div class="contact-arrow">→</div>
+            </a>
+
+            <!-- Instagram Card -->
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="liquid-card contact-item-card tilt-item reveal-on-scroll">
+              <div class="card-glow-edge"></div>
+              <div class="contact-icon-bubble insta-bubble">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              </div>
+              <div class="contact-meta">
+                <span class="contact-type">Instagram:</span>
+                <span class="contact-val">@dono.prompt.ai</span>
+                <span class="contact-hint" data-i18n="contact_insta_hint">AI san'ati va yangi ishlarim</span>
+              </div>
+              <div class="contact-arrow">→</div>
+            </a>
+
+            <!-- Academy Badge -->
+            <div class="liquid-card najot-footer-badge tilt-item reveal-on-scroll">
+              <div class="najot-content">
+                <span class="najot-sparkle">✨</span>
+                <div>
+                  <strong>Najot Ta'lim Bitiruvchisi</strong>
+                  <p>Zamonaviy kasblar markazi tomonidan tasdiqlangan malaka</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Liquid Glass Form -->
+          <div class="liquid-card contact-form-card tilt-item reveal-on-scroll">
+            <div class="card-glow-edge"></div>
+            <h3 class="form-title" data-i18n="form_title">Xabar Yuborish</h3>
+            <p class="form-desc" data-i18n="form_desc">Ma'lumotlaringizni qoldiring, tez orada siz bilan bog'lanaman</p>
+
+            <form id="contact-form" class="glass-form" novalidate>
+              <div class="form-group">
+                <label for="user-name" data-i18n="form_name_label">Ismingiz *</label>
+                <div class="input-wrap">
+                  <input type="text" id="user-name" name="name" placeholder="Masalan: Sardor" required>
+                  <span class="input-focus-glow"></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="user-phone" data-i18n="form_phone_label">Telefon raqamingiz yoki Telegram username *</label>
+                <div class="input-wrap">
+                  <input type="text" id="user-phone" name="phone" placeholder="+998 90 123 45 67 yoki @username" required>
+                  <span class="input-focus-glow"></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="project-type" data-i18n="form_type_label">Qiziqtirgan Yo'nalish</label>
+                <div class="input-wrap select-wrap">
+                  <select id="project-type" name="type">
+                    <option value="bot" data-i18n="opt_bot">🤖 Telegram Bot Yaratish</option>
+                    <option value="art" data-i18n="opt_art">🎨 AI Rasm va San'at Generatsiyasi</option>
+                    <option value="cartoon" data-i18n="opt_cartoon">🎬 3D Multfilm & Video Tayyorlash</option>
+                    <option value="insta" data-i18n="opt_insta">📱 Instagram SMM va Reels Yurgizish</option>
+                    <option value="other" data-i18n="opt_other">💡 Konsultatsiya / Boshqa</option>
+                  </select>
+                  <span class="input-focus-glow"></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="user-msg" data-i18n="form_msg_label">Loyiha haqida qisqacha</label>
+                <div class="input-wrap">
+                  <textarea id="user-msg" name="message" rows="4" placeholder="G'oyangiz, talablaringiz yoki savollaringizni yozing..."></textarea>
+                  <span class="input-focus-glow"></span>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-liquid-glow btn-full" id="form-submit-btn">
+                <span data-i18n="form_send_btn">Xabarni Yuborish</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="glass-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <div class="logo-prism">
+          <span class="logo-text">DR</span>
+          <span class="logo-dot"></span>
+        </div>
+        <div>
+          <span class="footer-name">DONO RAHIMOVA</span>
+          <p class="footer-copy">© 2026 Barcha huquqlar himoyalangan. Najot Ta'lim • Prompt Engineering.</p>
+        </div>
+      </div>
+
+      <div class="footer-contacts">
+        <a href="tel:+998977540979" class="footer-contact-link">+998 97 754 09 79</a>
+        <a href="https://t.me/donoraximova_ai" target="_blank" rel="noopener noreferrer" class="footer-contact-link">Telegram</a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-contact-link">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Scroll To Top -->
+  <button class="scroll-top-btn" id="scroll-top-btn" aria-label="Yuqoriga qaytish">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+  </button>
+
+  <!-- Toast Notification -->
+  <div class="liquid-toast" id="toast-notify">
+    <div class="toast-icon">✨</div>
+    <div class="toast-text" id="toast-message">Xabaringiz muvaffaqiyatli qabul qilindi!</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
