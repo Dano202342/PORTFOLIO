@@ -957,7 +957,7 @@ Rules:
     const msgInput = document.getElementById('user-msg');
 
     if (nameInput) {
-      nameInput.placeholder = lang === 'en' ? 'e.g. Alex' : (lang === 'ru' ? 'Например: Сардор' : 'Masalan: Sardor');
+      nameInput.placeholder = lang === 'en' ? 'e.g. Danorakhimova' : (lang === 'ru' ? 'Например: Danorakhimova' : 'Masalan: Danorakhimova');
     }
     if (phoneInput) {
       phoneInput.placeholder = lang === 'en' ? '+998 90 123 45 67 or @username' : '+998 90 123 45 67 yoki @username';
